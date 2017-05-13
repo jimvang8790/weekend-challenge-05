@@ -1,8 +1,8 @@
 // global app
 var myApp = angular.module('myApp', []);
 
-// setting up a controller (inject $http if using)
-myApp.controller('MovieController', function(){//NOTE inject $http here and service side
+// start ovieController (inject $http if using)
+myApp.controller('MovieController', function($http){//NOTE inject $http here and service side
   console.log('NG up');
 
   // variable global to this controller
@@ -10,7 +10,22 @@ myApp.controller('MovieController', function(){//NOTE inject $http here and serv
   // array attached to controller (makes it aviable to the DOM);
   vm.items = [];
 
-  // function to add a movies to db
+  // function to add movies to db
   // function to get all movies from db
-  
-});// end of controller
+
+});// end MovieController
+
+// start OmdbController
+myApp.controller('OmdbController', function($http){
+
+  // view model
+  var vm = this;
+
+  $http({
+    method: 'GET',
+    url: 'http://www.omdbapi.com/?s='
+  }).then(function success(response){
+    console.log('ombd resp:', response.data);
+    vm.movieData = response.data;
+  });// end then
+});// end OmdbController
