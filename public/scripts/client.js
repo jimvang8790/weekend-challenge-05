@@ -2,30 +2,41 @@
 var myApp = angular.module('myApp', []);
 
 // start ovieController (inject $http if using)
-myApp.controller('MovieController', function($http){//NOTE inject $http here and service side
-  console.log('NG up');
+myApp.controller('MovieController', function($http){
 
   // variable global to this controller
   var vm = this;
+
   // array attached to controller (makes it aviable to the DOM);
   vm.items = [];
 
-  // function to add movies to db
-  // function to get all movies from db
+  vm.allMovies = function(){
+    $http({
+      method: 'GET',
+      url: 'http://www.omdbapi.com/?s=' + vm.searchIn,
+    }).then(function(response){
+      console.log('search:', response.data.Search);
+      vm.items = response.data.Search;
+    });
+  };// end allMovie GET
 
+  vm.addMoives = function(){
+    console.log('favorite button clicked');
+
+    var movieToSend = {
+      title: title,
+      year: year,
+      poster: poster
+    };// end movieToSend
+    console.log('movieToSend:', movieToSend);
+
+    $http({
+      method: 'POST',
+      url: '/favMovie',
+      data: movieToSend
+    }).then(function(response){
+      console.log('add movie post:', response.statusText);
+    });// end $http
+
+  };// end addMoives
 });// end MovieController
-
-// start OmdbController
-myApp.controller('OmdbController', function($http){
-
-  // view model
-  var vm = this;
-
-  $http({
-    method: 'GET',
-    url: 'http://www.omdbapi.com/?s='
-  }).then(function success(response){
-    console.log('ombd resp:', response.data);
-    vm.movieData = response.data;
-  });// end then
-});// end OmdbController

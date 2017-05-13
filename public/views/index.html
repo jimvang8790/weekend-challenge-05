@@ -5,16 +5,24 @@
     <title>Weekend Challenge 05</title>
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="scripts/client.js" charset="utf-8"></script>
+    <script src="scripts/getMovie-service.js" charset="utf-8"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css">
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body ng-app="myApp">
     <div ng-controller="MovieController as mc">
       <h1>Movie Archives</h1>
-    </div>
+      <input ng-model="mc.serchIn" type="text" placeholder="movie name">
+      <button ng-click="mc.allMovies()" class="btn" type="button" name="searchButton">Search</button>
 
-    <div ng-controller="OmdbController as omdb">
-      {{omdb.movieData}}
+      <div class="container">
+        <div ng-repeat="thing in mc.items">
+          <h3>{{thing.Title}}</h3>
+          <h3>{{thing.Year}}</h3>
+          <button ng-click="mc.addMoives()" type="button" class="btn">Favorite</button>
+        </div>
+      </div>
+
     </div>
   </body>
 </html>
