@@ -8,7 +8,7 @@ myApp.controller('MovieController', function($http){
   var vm = this;
 
   // array attached to controller (makes it aviable to the DOM);
-  // vm.items = [];
+  // vm.display = [];
 
   // dislpay movies seached from OMDB
   vm.allMovies = function(){
@@ -31,20 +31,22 @@ myApp.controller('MovieController', function($http){
     console.log('movieToSend', movieToSend);
     $http({
       method: 'POST',
-      url: '/addMovie'
+      url: '/addMovie',
+      data: movieToSend
     }).then(function(response){
       console.log('back from server:', response);
     });
   };// end addMoiveToDB
 
-  vm.dislpayFav = function(){
-    $http({
-      method: 'GET',
-      url: '/displayFav'
-    }).then(function(){
-      console.log('displayFav:', response.data);
-      vm.display = response.data;
-    });
-  };// end displayFav
+  // vm.displayFav = function(){
+  //   console.log('favorite list button click');
+  //   $http({
+  //     method: 'GET',
+  //     url: '/displayFav'
+  //   }).then(function(){
+  //     console.log('displayFav:', response.data);
+  //     vm.display = response.data;
+  //   });
+  // };// end displayFav
 
 });// end MovieController
