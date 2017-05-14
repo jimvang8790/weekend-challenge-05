@@ -13,30 +13,31 @@ myApp.controller('MovieController', function($http){
   vm.allMovies = function(){
     $http({
       method: 'GET',
-      url: 'http://www.omdbapi.com/?s=' + vm.display,
+      url: 'http://www.omdbapi.com/?s=' + vm.searchIn,
     }).then(function(response){
       console.log('search:', response.data.Search);
       vm.items = response.data.Search;
     });
   };// end allMovie GET
 
-  vm.addMoives = function(title, poster, year){
-    console.log('favorite button clicked');
-
-    var movieToSend = {
-      title: title,
-      poster: poster,
-      year: year
-    };// end movieToSend
-    console.log('movieToSend:', movieToSend);
-
-    $http({
-      method: 'POST',
-      url: '/favMovie',
-      data: movieToSend
-    }).then(function(response){
-      console.log('add movie post:', response.statusText);
-    });// end $http
-
-  };// end addMoives
+  // vm.addMoives = function(){
+  //   console.log('favorite button clicked');
+  //
+  //   var movieToSend = {
+  //     title: vm.Title,
+  //     poster: vm.Poster,
+  //     year: vm.Year
+  //   };// end movieToSend
+  //   console.log('movieToSend:', movieToSend);
+  //
+  //   $http({
+  //     method: 'POST',
+  //     url: '/favMovie',
+  //     data: movieToSend
+  //   }).then(function(response){
+  //     console.log('add movie post:', response);
+  //   });// end $http
+  //
+  // };// end addMoives
+  
 });// end MovieController

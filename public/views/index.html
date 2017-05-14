@@ -11,12 +11,16 @@
   </head>
   <body ng-app="myApp">
     <div ng-controller="MovieController as mc">
-      <h1>Movie Archives</h1>
-      <!-- <input ng-model="mc.serchIn" type="text" placeholder="movie name"> -->
-      <button ng-click="mc.allMovies()" class="btn" type="button" name="searchButton">Show Movie Archive</button>
+      <div class="jumbotron"><h1>Movie Archive</h1></div>
 
       <div class="container">
-        <div ng-repeat="thing in mc.items">
+        <h2>Search for Film...</h2>
+        <input ng-model="mc.searchIn" type="text" placeholder="search movie title">
+        <button ng-click="mc.allMovies()" class="btn display" type="button" name="searchButton">Display Movies</button>
+      </div>
+
+      <div class="films">
+        <div ng-repeat="thing in mc.items" class="moives">
           <h3>Movie Title: {{thing.Title}}</h3>
           <img ng-src="{{thing.Poster}}">
           <h3>Year Released: {{thing.Year}}</h3>
