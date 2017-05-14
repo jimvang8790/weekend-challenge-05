@@ -8,25 +8,25 @@ myApp.controller('MovieController', function($http){
   var vm = this;
 
   // array attached to controller (makes it aviable to the DOM);
-  vm.items = [];
+  // vm.items = [];
 
   vm.allMovies = function(){
     $http({
       method: 'GET',
-      url: 'http://www.omdbapi.com/?s=' + vm.searchIn,
+      url: 'http://www.omdbapi.com/?s=' + vm.display,
     }).then(function(response){
       console.log('search:', response.data.Search);
       vm.items = response.data.Search;
     });
   };// end allMovie GET
 
-  vm.addMoives = function(){
+  vm.addMoives = function(title, poster, year){
     console.log('favorite button clicked');
 
     var movieToSend = {
       title: title,
-      year: year,
-      poster: poster
+      poster: poster,
+      year: year
     };// end movieToSend
     console.log('movieToSend:', movieToSend);
 
