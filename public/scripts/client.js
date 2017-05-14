@@ -10,6 +10,7 @@ myApp.controller('MovieController', function($http){
   // array attached to controller (makes it aviable to the DOM);
   // vm.items = [];
 
+  // dislpay movies seached from OMDB
   vm.allMovies = function(){
     $http({
       method: 'GET',
@@ -20,24 +21,30 @@ myApp.controller('MovieController', function($http){
     });
   };// end allMovie GET
 
-  // vm.addMoives = function(){
-  //   console.log('favorite button clicked');
-  //
-  //   var movieToSend = {
-  //     title: vm.Title,
-  //     poster: vm.Poster,
-  //     year: vm.Year
-  //   };// end movieToSend
-  //   console.log('movieToSend:', movieToSend);
-  //
-  //   $http({
-  //     method: 'POST',
-  //     url: '/favMovie',
-  //     data: movieToSend
-  //   }).then(function(response){
-  //     console.log('add movie post:', response);
-  //   });// end $http
-  //
-  // };// end addMoives
-  
+  vm.addMoiveToDB = function (title, poster, year){
+    console.log('favorite button clicked');
+    var movieToSend = {
+      title: title,
+      poster: poster,
+      year: year
+    };// end movieToSend
+    console.log('movieToSend', movieToSend);
+    $http({
+      method: 'POST',
+      url: '/addMovie'
+    }).then(function(response){
+      console.log('back from server:', response);
+    });
+  };// end addMoiveToDB
+
+  vm.dislpayFav = function(){
+    $http({
+      method: 'GET',
+      url: '/displayFav'
+    }).then(function(){
+      console.log('displayFav:', response.data);
+      vm.display = response.data;
+    });
+  };// end displayFav
+
 });// end MovieController

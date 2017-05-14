@@ -10,22 +10,32 @@
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body ng-app="myApp">
-    <div ng-controller="MovieController as mc">
+    <div ng-controller="MovieController as mc" ng-init="mc.displayFav()">
       <div class="jumbotron"><h1>Movie Archive</h1></div>
 
+      <!-- Search movies in OMDB -->
       <div class="container">
         <h2>Search for Film...</h2>
         <input ng-model="mc.searchIn" type="text" placeholder="search movie title">
         <button ng-click="mc.allMovies()" class="btn display" type="button" name="searchButton">Display Movies</button>
       </div>
 
-      <div class="films">
-        <div ng-repeat="thing in mc.items" class="moives">
+      <!-- Display movies seached from OMDB and a favorite button -->
+      <div class="rows">
+        <div ng-repeat="thing in mc.items" class="outputDiv col-sm-4">
           <h3>Movie Title: {{thing.Title}}</h3>
           <img ng-src="{{thing.Poster}}">
           <h3>Year Released: {{thing.Year}}</h3>
-          <button ng-click="mc.addMoives()" type="button" class="btn">Favorite</button>
+          <button ng-click="mc.addMoiveToDB(thing.Title, thing.Poster, thing.Year)" type="button" class="btn">Favorite</button>
         </div>
+      </div>
+
+      <!-- Display favorite list after clicking the favorite btn when movie display for OMDB -->
+      <div class="container"><h2>Favorite Movies</h2></div>
+      <div class="favOutputDiv" ng-repeat="thing in mc.display">
+        <h3>Movie Title: {{thing.Title}}</h3>
+        <img ng-src="{{thing.Poster}}">
+        <h3>Year Released: {{thing.Year}}</h3>
       </div>
 
     </div>
