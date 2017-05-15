@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 // which calls routes/route and ends with / in router.post
 app.use('/addMovie', movieRoutes);
 app.use('/faveDatabase', movieRoutes);
+app.use('/deleteMovie', movieRoutes);
 
 // base url
 app.get('/', function(req, res){

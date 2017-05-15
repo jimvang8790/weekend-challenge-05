@@ -23,5 +23,18 @@ router.post('/', function(req, res){
   });
 });// end post
 
+// DELETE
+router.delete('/', function(req, res){
+  console.log('delete call');
+  films.remove({_id: req.body.id}, function(err){
+    if(err) {
+      res.sendStatus(500);
+    }
+    else {
+      res.sendStatus(200);
+    }
+  });
+});// end delete
+
 // exports
 module.exports = router;
