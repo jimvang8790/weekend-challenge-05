@@ -38,15 +38,4 @@ myApp.controller('MovieController', function($http){
     });
   };// end addMoiveToDB
 
-  // vm.displayFav = function(){
-  //   console.log('favorite list button click');
-  //   $http({
-  //     method: 'GET',
-  //     url: '/displayFav'
-  //   }).then(function(){
-  //     console.log('displayFav:', response.data);
-  //     vm.display = response.data;
-  //   });
-  // };// end displayFav
-
 });// end MovieController
