@@ -47,6 +47,7 @@ myApp.controller('MovieController', function($http, MoviesInDatabase){
 
   vm.deleteMovie = function() {
     console.log('delete button hit');
+    vm.myId =
     $http({
       method: 'DELETE',
       url: '/deleteMovie',
