@@ -47,11 +47,17 @@ myApp.controller('MovieController', function($http, MoviesInDatabase){
 
   vm.deleteMovie = function() {
     console.log('delete button hit');
-    vm.myId =
+    vm.myId = this.data('id');
+    console.log('removing:', id);
+    var movieToDelete = {
+      id: myId
+    };
     $http({
       method: 'DELETE',
       url: '/deleteMovie',
       data: movieToDelete
+    }).then(function(response){
+      addMoiveToDB();
     });
   };
 
