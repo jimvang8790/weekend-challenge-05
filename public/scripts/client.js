@@ -8,7 +8,7 @@ myApp.controller('MovieController', function($http, MoviesInDatabase){
   var vm = this;
 
   // array attached to controller (makes it aviable to the DOM);
-  vm.display = [];
+  // vm.display = [];
 
   vm.displayFav = function() {
     MoviesInDatabase.getDatabase().then(function(data){
@@ -42,8 +42,6 @@ myApp.controller('MovieController', function($http, MoviesInDatabase){
       data: movieToSend
     }).then(function(response){
       console.log('back from server:', response);
-
-      vm.displayFav();
     });
   };// end addMoiveToDB
 

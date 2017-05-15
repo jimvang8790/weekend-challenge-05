@@ -7,19 +7,11 @@ var movieModel = require('../models/movies');
 // GET
 router.get('/', function(req, res){
   console.log('get call');
-  movieModel.movies.find().then(function(data){
+  movieModel.films.find().then(function(data){
     console.log('data:', data);
     res.send(data);
   });
 });// end GET
-
-// router.get('/', function(req, res){
-//   console.log('get db');
-//   movieModel.movies.find().then(function(data){
-//       console.log('db:', data);
-//       res.send(data);
-//   });
-// }); // end GET
 
 // POST
 router.post('/', function(req, res){
