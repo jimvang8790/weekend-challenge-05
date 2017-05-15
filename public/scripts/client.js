@@ -45,4 +45,13 @@ myApp.controller('MovieController', function($http, MoviesInDatabase){
     });
   };// end addMoiveToDB
 
+  vm.deleteMovie = function() {
+    console.log('delete button hit');
+    $http({
+      method: 'DELETE',
+      url: '/deleteMovie',
+      data: movieToDelete
+    });
+  };
+
 });// end MovieController

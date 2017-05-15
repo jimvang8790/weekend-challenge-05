@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body ng-app="myApp">
-    <div ng-controller="MovieController as mc" ng-init="mc.displayFav()">
+    <div ng-controller="MovieController as mc" >
       <div class="jumbotron"><h1>Movie Archive</h1></div>
 
       <!-- Search movies in OMDB -->
@@ -37,6 +37,7 @@
         <h3>Movie Title: {{fave.title}}</h3>
         <img ng-src="{{fave.poster}}">
         <h3>Year Released: {{fave.year}}</h3>
+        <button ng-click="mc.deleteMovie()" class="btn display" type="button" name="deleteButton">Delete</button>
       </div>
 
     </div>
