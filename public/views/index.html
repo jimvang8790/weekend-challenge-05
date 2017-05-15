@@ -18,7 +18,7 @@
         <h2>Search for Film...</h2>
         <input ng-model="mc.searchIn" type="text" placeholder="enter movie title">
         <button ng-click="mc.allMovies()" class="btn display" type="button" name="searchButton">Search Archive</button>
-        <!-- <button ng-click="mc.displayFav()" class="btn display" type="button" name="searchButton">Display Favorites</button> -->
+        <button ng-click="mc.displayFav()" class="btn display" type="button" name="searchButton">Display Favorites</button>
       </div>
 
       <!-- Display movies seached from OMDB and a favorite button -->
@@ -33,10 +33,10 @@
 
       <!-- Display favorite list after clicking the favorite btn when movie display for OMDB -->
       <div class="container"><h2>Favorite Movies</h2></div>
-      <div class="favOutputDiv col-sm-4" ng-repeat="thing in mc.display">
-        <h3>Movie Title: {{thing.Title}}</h3>
-        <img ng-src="{{thing.Poster}}">
-        <h3>Year Released: {{thing.Year}}</h3>
+      <div class="favOutpeutDiv col-sm-4" ng-repeat="fave in mc.display">
+        <h3>Movie Title: {{fave.title}}</h3>
+        <img ng-src="{{fave.poster}}">
+        <h3>Year Released: {{fave.year}}</h3>
       </div>
 
     </div>
