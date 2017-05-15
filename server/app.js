@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 // then come this part of path and then calls movieRoutes
 // which calls routes/route and ends with / in router.post
 app.use('/addMovie', movieRoutes);
-app.use('/displayFav', movieRoutes);
+app.use('/faveDatabase', movieRoutes);
 
 // base url
 app.get('/', function(req, res){

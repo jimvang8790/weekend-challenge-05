@@ -2,13 +2,20 @@
 var myApp = angular.module('myApp', []);
 
 // start ovieController (inject $http if using)
-myApp.controller('MovieController', function($http){
+myApp.controller('MovieController', function($http, MoviesInDatabase){
 
   // variable global to this controller
   var vm = this;
 
   // array attached to controller (makes it aviable to the DOM);
-  // vm.display = [];
+  vm.display = [];
+
+  vm.displayFav = function() {
+    MoviesInDatabase.getDatabase().then(function(data){
+      console.log('using dot then', data);
+      vm.display = data;
+    });
+  };
 
   // dislpay movies seached from OMDB
   vm.allMovies = function(){
@@ -35,6 +42,8 @@ myApp.controller('MovieController', function($http){
       data: movieToSend
     }).then(function(response){
       console.log('back from server:', response);
+
+      vm.displayFav();
     });
   };// end addMoiveToDB
 

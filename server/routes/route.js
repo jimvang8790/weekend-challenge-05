@@ -13,6 +13,14 @@ router.get('/', function(req, res){
   });
 });// end GET
 
+// router.get('/', function(req, res){
+//   console.log('get db');
+//   movieModel.movies.find().then(function(data){
+//       console.log('db:', data);
+//       res.send(data);
+//   });
+// }); // end GET
+
 // POST
 router.post('/', function(req, res){
   console.log('post call');
